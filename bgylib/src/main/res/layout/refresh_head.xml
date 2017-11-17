@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/head_view"
+                android:background="@color/gray_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="22dp"
+            android:paddingBottom="22dp"
+            android:layout_alignParentBottom="true">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+            <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:visibility="visible"
+                        android:id="@+id/pull_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/pull_icon_big"/>
+
+                <TextView
+                        android:visibility="visible"
+                        android:id="@+id/state_tv"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/show_all_data"
+                        android:textColor="@color/gray"
+                        android:textSize="13sp"/>
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/refreshing_icon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:padding="3dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/refreshing"
+                    android:visibility="gone"/>
+            <ImageView
+                    android:id="@+id/state_iv"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="@null"
+                    android:visibility="gone"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
