@@ -264,7 +264,7 @@ public class PullToRefreshLayout extends RelativeLayout {
                 }
                 // 上拉布局初始状态
                 loadStateImageView.setVisibility(View.GONE);
-                loadStateTextView.setText(R.string.a_pullup_to_load);
+//                loadStateTextView.setText(R.string.a_pullup_to_load);
 
 
                 pullUpView.clearAnimation();
@@ -292,7 +292,7 @@ public class PullToRefreshLayout extends RelativeLayout {
                 if (currentLastPage == 2) {
                     break;
                 }
-                loadStateTextView.setText(R.string.a_release_to_load);
+//                loadStateTextView.setText(R.string.a_release_to_load);
                 pullUpView.startAnimation(rotateAnimation);
                 break;
             case LOADING:
@@ -302,7 +302,7 @@ public class PullToRefreshLayout extends RelativeLayout {
 
                 loadingView.setVisibility(View.VISIBLE);
                 loadingView.startAnimation(refreshingAnimation);
-                loadStateTextView.setText(R.string.a_loading);
+//                loadStateTextView.setText(R.string.a_loading);
                 break;
             case DONE:
                 // 刷新或加载完毕，停止动画

@@ -55,6 +55,8 @@ public class ReqUrlToos {
     public static String buildGetRequestUrl(String url, HashMap<String, Object> mParams) {
         String temp = "";
         String newUrl = url;
+        if (mParams == null)
+            return newUrl;
         for (String key : mParams.keySet()) {
             String value = String.valueOf(mParams.get(key));
             if (value != null) {

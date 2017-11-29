@@ -6,7 +6,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
+import com.dctp.bgylib.event.RequestEvent;
 import com.dctp.bgylib.okhttp.entity.BaseEntity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -128,11 +131,13 @@ public class DctpModel<T> implements Callback {
 
     private void onSuccess(final int requestID, final Response response, final int code) throws IOException {
         final String data = response.body().string();
+        ReqLog.d("myLog", "response-->" + data);
         mContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (code == -1) {
-                    mCallBack.receive(requestID, null, code);
+                if (code == -1 || code == -2) {//连接超时||连接失败
+                    mCallBack.receive(requestID, null, -1);
+                    EventBus.getDefault().post(new RequestEvent(code));
                 } else {
                     if (response.code() == 200) {
                         try {
@@ -140,6 +145,8 @@ public class DctpModel<T> implements Callback {
                             mCallBack.receive(requestID, obj, code);
                         } catch (Exception e) {
                             e.printStackTrace();
+                            mCallBack.receive(requestID, null, -2);
+                            EventBus.getDefault().post(new RequestEvent(-2));
                         }
                     } else {
                         try {
@@ -152,9 +159,8 @@ public class DctpModel<T> implements Callback {
                 }
             }
         });
-
-
     }
+
 
     /**
      * 统一为请求添加头信息
